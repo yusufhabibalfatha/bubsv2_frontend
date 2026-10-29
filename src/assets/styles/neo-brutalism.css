@@ -1,0 +1,235 @@
+/* ==========================================================
+   NEO-BRUTALISM SCHOOL UI KIT V2 (Mobile-First & Responsive)
+   ========================================================== */
+
+:root {
+  /* Palet Warna Utama */
+  --primary-blue: #2563eb;
+  --secondary-blue: #3b82f6;
+  --accent-yellow: #fbbf24;
+  --accent-red: #ef4444;
+  --accent-green: #10b981;
+  --accent-orange: #f97316;
+  --accent-purple: #8b5cf6;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-light: #f3f4f6;
+  --gray-muted: #e5e7eb;
+  --gray-dark: #374151;
+
+  /* Ciri Khas Neo-Brutalism */
+  --border: 3px solid var(--black);
+  --border-sm: 2px solid var(--black);
+  --shadow-lg: 8px 8px 0px var(--black);
+  --shadow: 4px 4px 0px var(--black);
+  --shadow-sm: 2px 2px 0px var(--black);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+  color: var(--black);
+  overflow: hidden; /* Dikunci agar scroll hanya terjadi di area konten tengah */
+}
+
+/* Pola garis diagonal halus khas GeneralLayout v1 */
+.bg-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(59, 130, 246, 0.05) 10px,
+    rgba(59, 130, 246, 0.05) 20px
+  );
+}
+
+/* ==========================================================
+   1. KARTU UTAMA (Neo Card)
+   ========================================================== */
+.neo-card {
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.neo-card-top-bar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 8px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-blue),
+    var(--accent-yellow),
+    var(--accent-green),
+    var(--accent-red)
+  );
+}
+
+.neo-card-left-bar {
+  padding-left: 1.5rem;
+}
+
+.neo-card-left-bar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 8px;
+  background: linear-gradient(180deg, var(--primary-blue), var(--accent-green));
+}
+
+/* ==========================================================
+   2. TOMBOL FISIK (Tactile Buttons)
+   ========================================================== */
+.neo-btn {
+  padding: 0.7rem 1.2rem;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: var(--border-sm);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.neo-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+
+.neo-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--black);
+}
+
+.neo-btn:disabled {
+  background: var(--gray-light);
+  color: var(--gray-dark);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.neo-btn-blue   { background: var(--primary-blue); color: var(--white); }
+.neo-btn-yellow { background: var(--accent-yellow); color: var(--black); }
+.neo-btn-green  { background: var(--accent-green); color: var(--white); }
+.neo-btn-red    { background: var(--accent-red); color: var(--white); }
+.neo-btn-orange { background: var(--accent-orange); color: var(--white); }
+.neo-btn-white  { background: var(--white); color: var(--black); }
+
+/* ==========================================================
+   3. FORM INPUT & SELECT NEO-BRUTALISM
+   ========================================================== */
+.neo-input,
+.neo-select,
+.neo-textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: var(--border-sm);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--black);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.neo-input:focus,
+.neo-select:focus,
+.neo-textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background: #f0f9ff;
+}
+
+/* ==========================================================
+   4. BADGE STATUS
+   ========================================================== */
+.neo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.65rem;
+  border: 2px solid var(--black);
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0px var(--black);
+}
+
+.neo-badge-green  { background: #d1fae5; color: #065f46; }
+.neo-badge-yellow { background: #fef3c7; color: #92400e; }
+.neo-badge-red    { background: #fee2e2; color: #991b1b; }
+.neo-badge-blue   { background: #dbeafe; color: #1e40af; }
+.neo-badge-gray   { background: var(--gray-light); color: var(--gray-dark); }
+
+/* ==========================================================
+   5. MODAL POP-UP
+   ========================================================== */
+.neo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.neo-modal-box {
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.2s ease-out;
+}
+
+/* ==========================================================
+   6. ANIMASI & UTILITAS LAYOUT
+   ========================================================== */
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: translateY(-16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-8px); }
+}
+
+.container-page {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
