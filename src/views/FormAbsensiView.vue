@@ -239,9 +239,11 @@ function simpanDetailSiswa(payload) {
 
 function buatTeksRingkasanGrup() {
   const j = jadwal.value
-  let msg = `📅 *Presensi Kelas ${j?.kelas?.nama} (${j?.kelas?.nama_sekolah})*\n`
+
+  let msg = `📅 *Presensi Kelas ${j?.kelas?.nama}*\n`
   msg += `*Hari/Tgl:* ${j?.hari}\n`
-  msg += `*Mapel:* ${j?.mapel?.nama} (JP ${j?.jam?.jamKe})\n`
+  msg += `*Mapel:* ${j?.mapel?.nama}\n`
+  msg += `*Jam:* ${j?.jam?.jamMulai} - ${j?.jam?.jamSelesai} (JP ${j?.jam?.jamKe})\n`
   msg += `*Guru:* ${j?.guru?.nama}\n`
   msg += `*Materi:* ${materi.value}\n\n`
 
@@ -318,6 +320,8 @@ onMounted(() => {
     return
   }
   jadwal.value = JSON.parse(saved)
+
+  console.log(jadwal.value)
   fetchDaftarSiswa()
 })
 </script>
