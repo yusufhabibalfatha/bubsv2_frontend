@@ -3,9 +3,9 @@
     <div class="navbar-inner container-page">
       <!-- Kiri: Logo & Nama Sistem -->
       <div class="brand-box" @click="$router.push('/')">
-        <div class="logo-wrapper">
+        <!-- <div class="logo-wrapper">
           <AppIcon name="logo-sekolah" size="1.6rem" />
-        </div>
+        </div> -->
         <div class="brand-text">
           <h1 class="brand-title">PRESENSI SEKOLAH</h1>
           <span class="brand-subtitle">
@@ -32,8 +32,12 @@
           </option>
         </select>
 
+        <a href="/absen_guru" class="portal-btn" title="Masuk ke Web Absen Guru">
+          👨🏻‍🏫 Absen Guru
+        </a>
+
         <!-- Tombol eksperimen untuk menguji apakah TopNavbar lebih enak Sticky atau ikut Scroll -->
-        <button
+        <!-- <button
           type="button"
           class="pin-toggle-btn"
           :class="{ active: appState.isTopNavbarSticky }"
@@ -41,7 +45,7 @@
           :title="appState.isTopNavbarSticky ? 'Navbar dikunci di atas (Klik untuk lepas)' : 'Navbar ikut scroll (Klik untuk kunci)'"
         >
           {{ appState.isTopNavbarSticky ? '📌' : '🔓' }}
-        </button>
+        </button> -->
       </div>
     </div>
   </header>
@@ -131,6 +135,19 @@ import AppIcon from '@/components/ui/AppIcon.vue'
 
 .pin-toggle-btn.active {
   background: #d1fae5;
+}
+
+.portal-btn {
+  padding: 0.4rem 0.6rem;
+  border: var(--border-sm);
+  border-radius: 8px;
+  background: var(--primary-blue);
+  color: var(--white);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {

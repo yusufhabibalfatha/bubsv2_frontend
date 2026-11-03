@@ -19,7 +19,8 @@ export default defineConfig({
     proxy: {
       // Meneruskan request /api ke server lokal CodeIgniter 4 (php spark serve)
       '/api': {
-        target: 'http://localhost:8080',
+        // target: 'http://localhost:8080',
+        target: 'https://bubstarakan.com',
         changeOrigin: true,
       },
     },
