@@ -38,9 +38,9 @@ import MasterTahunAjaran from '@/components/master/MasterTahunAjaran.vue'
 const activeTab = ref('wa')
 
 const tabs = [
-  { key: 'wa', label: '💬 Sekolah & Template WA' },
-  { key: 'siswa', label: '👥 Siswa & No. Ortu' },
-  { key: 'kelas', label: '🏷️ Kelas' },
+  { key: 'wa', label: '💬 Sekolah & WA Gateway' },
+  { key: 'kelas', label: '🏷️ Kelas & Grup WA' },
+  { key: 'siswa', label: '👥 Siswa' },
   { key: 'guru', label: '👨‍🏫 Guru' },
   { key: 'mapel', label: '📚 Mapel' },
   { key: 'tahun', label: '📅 Tahun Ajaran' },

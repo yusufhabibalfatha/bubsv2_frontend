@@ -4,14 +4,14 @@
     title="✅ Absensi & Jurnal Tersimpan!"
     @update:model-value="$emit('update:modelValue', $event)"
   >
-    <!-- 1. Kotak Status Pengiriman WA Otomatis (Fonnte) ke Orang Tua -->
+    <!-- 1. Kotak Status Pengiriman WA Otomatis (Fonnte) ke Grup WA Kelas -->
     <div class="wa-gateway-box" :class="hasilWa?.dikirim ? 'ok' : 'warn'">
       <h4 class="wa-box-title">
-        {{ hasilWa?.dikirim ? '💬 Notifikasi WA Orang Tua Terkirim Otomatis!' : '⚠️ Info Notifikasi WA Gateway' }}
+        {{ hasilWa?.dikirim ? '💬 Ringkasan Terkirim Otomatis ke Grup WA Kelas!' : '⚠️ Info Notifikasi WA Grup Kelas' }}
       </h4>
       <p class="wa-box-desc">
         <template v-if="hasilWa?.dikirim">
-          Sebanyak <strong>{{ hasilWa.jumlah_target }} pesan personal</strong> berhasil dimasukkan ke antrean WhatsApp Fonnte ({{ hasilWa.respon_fonnte }}).
+          Ringkasan absensi kelas <strong>{{ hasilWa.nama_kelas || '' }}</strong> berhasil dikirim ke Grup WhatsApp (<code>{{ hasilWa.wa_group_id }}</code>) via Fonnte ({{ hasilWa.respon_fonnte }}).
         </template>
         <template v-else>
           {{ hasilWa?.keterangan || hasilWa?.respon_fonnte || 'Pesan disimpan di log notifikasi.' }}
@@ -19,9 +19,9 @@
       </p>
     </div>
 
-    <!-- 2. Kotak Teks Ringkasan Kelas (Opsional untuk Grup WA Guru/Wali Kelas) -->
+    <!-- 2. Kotak Teks Ringkasan Kelas -->
     <div class="group-share-section">
-      <label class="share-label">📋 Ringkasan Kelas (Opsional untuk Grup Sekolah):</label>
+      <label class="share-label">📋 Ringkasan Absensi Kelas:</label>
       <textarea
         readonly
         :value="teksRingkasanGrup"

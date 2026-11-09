@@ -78,7 +78,7 @@
           class="neo-btn neo-btn-green btn-submit-full"
           :disabled="submitLoading || stats.belum > 0 || !materi.trim()"
         >
-          {{ submitLoading ? '⏳ Menyimpan & Mengirim WA Ortu...' : '📤 Simpan Absensi & Kirim WA Otomatis' }}
+          {{ submitLoading ? '⏳ Menyimpan & Mengirim ke Grup WA Kelas...' : '📤 Simpan Absensi & Kirim ke Grup WA Kelas' }}
         </button>
       </div>
     </form>
@@ -243,7 +243,7 @@ function buatTeksRingkasanGrup() {
   let msg = `📅 *Presensi Kelas ${j?.kelas?.nama}*\n`
   msg += `*Hari/Tgl:* ${j?.hari}\n`
   msg += `*Mapel:* ${j?.mapel?.nama}\n`
-  msg += `*Jam:* ${j?.jam?.jamMulai} - ${j?.jam?.jamSelesai} (JP ${j?.jam?.jamKe})\n`
+  msg += `*Jam:* ${j?.jam?.jamMulai} - ${j?.jam?.jamSelesai}\n`
   msg += `*Guru:* ${j?.guru?.nama}\n`
   msg += `*Materi:* ${materi.value}\n\n`
 
@@ -300,7 +300,7 @@ async function submitAbsensi() {
   try {
     const res = await api.post('/jurnal-mengajar', payload)
     hasilNotifikasiWa.value = res.data?.notifikasi_wa || {}
-    teksRingkasanGrup.value = buatTeksRingkasanGrup()
+    teksRingkasanGrup.value = res.data?.notifikasi_wa?.teks_ringkasan || buatTeksRingkasanGrup()
     showResultModal.value = true
   } catch (err) {
     const apiErr = err.response?.data?.messages

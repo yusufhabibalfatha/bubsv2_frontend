@@ -58,39 +58,17 @@
                 </button>
               </div>
               <small class="hint">
-                Token ini digunakan khusus saat guru mengabsen kelas di unit {{ sekolah.nama_jenjang }}.
+                Token ini digunakan untuk mengirim ringkasan absensi ke Grup WhatsApp masing-masing kelas di unit {{ sekolah.nama_jenjang }}. Pastikan <strong>ID Grup WA Kelas</strong> sudah diatur pada tab <strong>🏷️ Kelas & Grup WA</strong>.
               </small>
-            </div>
-
-            <div class="field-group">
-              <label>📝 Format Template Pesan WhatsApp ({{ sekolah.nama_jenjang }})</label>
-              <div class="placeholder-chips">
-                <button
-                  v-for="tag in availableTags"
-                  :key="tag"
-                  type="button"
-                  class="chip-btn"
-                  title="Klik untuk menambahkan ke template"
-                  @click="insertTag(sekolah, tag)"
-                >
-                  {{ tag }}
-                </button>
-              </div>
-              <textarea
-                v-model="sekolah.template_wa"
-                rows="9"
-                class="neo-textarea font-mono"
-                placeholder="Tulis format pesan WhatsApp..."
-              />
             </div>
           </div>
 
-          <!-- Kolom Kanan: Live Preview WhatsApp -->
+          <!-- Kolom Kanan: Contoh Format Ringkasan Grup Kelas -->
           <div class="preview-col">
-            <label class="preview-title">📱 Live Preview di HP Orang Tua:</label>
+            <label class="preview-title">📱 Contoh Ringkasan di Grup WA Kelas:</label>
             <div class="wa-chat-bubble">
               <pre class="wa-chat-text">{{ renderPreview(sekolah) }}</pre>
-              <span class="wa-chat-time">08:45 ✓✓</span>
+              <span class="wa-chat-time">09:00 ✓✓</span>
             </div>
           </div>
         </div>
@@ -120,21 +98,6 @@ const sekolahForms = ref([])
 const loading = ref(false)
 const savingId = ref(null)
 
-const availableTags = [
-  '{nama_sekolah}',
-  '{nama_siswa}',
-  '{kelas}',
-  '{tanggal}',
-  '{mapel}',
-  '{jam_ke}',
-  '{guru}',
-  '{materi}',
-  '{status}',
-  '{nilai}',
-  '{keterangan}',
-  '{catatan}',
-]
-
 async function fetchSekolah() {
   loading.value = true
   try {
@@ -152,32 +115,29 @@ async function fetchSekolah() {
   }
 }
 
-function insertTag(sekolah, tag) {
-  sekolah.template_wa = (sekolah.template_wa || '') + ' ' + tag
-}
-
 function renderPreview(sekolah) {
-  const tpl = sekolah.template_wa || ''
-  const dummy = {
-    '{nama_sekolah}': sekolah.nama,
-    '{nama_siswa}': 'Fajar Ramadhan',
-    '{kelas}': sekolah.nama_jenjang === 'SMP' ? 'VII-A' : 'XI-1',
-    '{tanggal}': new Date().toLocaleDateString('id-ID'),
-    '{mapel}': 'Pendidikan Pancasila',
-    '{jam_ke}': '1-2',
-    '{guru}': 'Budi Santoso, M.Pd.',
-    '{materi}': 'Konstitusi dalam Kehidupan Berbangsa',
-    '{status}': 'HADIR',
-    '{nilai}': '92',
-    '{keterangan}': 'Hadir tepat waktu',
-    '{catatan}': 'Aktif berdiskusi di kelas',
-  }
+  const kelasContoh = sekolah.nama_jenjang === 'SMP' ? 'VII-A' : 'XI-1'
+  const hariTgl = new Date().toLocaleDateString('id-ID', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
 
-  let result = tpl
-  for (const [key, val] of Object.entries(dummy)) {
-    result = result.split(key).join(val)
-  }
-  return result
+  return (
+    `📅 *Presensi Kelas ${kelasContoh}*\n` +
+    `*Hari/Tgl:* ${hariTgl}\n` +
+    `*Mapel:* Pendidikan Pancasila\n` +
+    `*Jam:* 07:30 - 09:00\n` +
+    `*Guru:* Budi Santoso, M.Pd.\n` +
+    `*Materi:* Konstitusi dalam Kehidupan Berbangsa\n\n` +
+    `✅ *Hadir (2):*\n` +
+    `- Fajar Ramadhan\n` +
+    `- Zahra Amalia\n\n` +
+    `🤒 *Sakit (1):*\n` +
+    `- Bagas Saputra (Istirahat di klinik)\n\n` +
+    `📊 *Total:* 3 Siswa`
+  )
 }
 
 async function simpanSekolah(sekolah) {

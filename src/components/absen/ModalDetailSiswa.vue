@@ -12,7 +12,7 @@
     </p>
 
     <div class="form-group">
-      <label class="form-label">Keterangan Kehadiran (Tampil di WA Ortu)</label>
+      <label class="form-label">Keterangan Kehadiran (Tampil di Ringkasan Grup WA Kelas)</label>
       <input
         v-model="localKeterangan"
         type="text"

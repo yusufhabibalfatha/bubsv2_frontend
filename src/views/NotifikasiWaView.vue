@@ -25,7 +25,7 @@
           <span v-if="filterTanggal">pada tanggal <strong>{{ formatTanggalIndo(filterTanggal) }}</strong></span>
         </div>
         <p class="banner-desc">
-          Kirim ulang semua pesan gagal sekaligus ke nomor orang tua/wali siswa tanpa harus menekan tombol satu persatu.
+          Kirim ulang semua pesan ringkasan yang gagal sekaligus ke Grup WhatsApp masing-masing kelas.
         </p>
       </div>
       <button
@@ -81,9 +81,9 @@
       >
         <div class="log-top">
           <div>
-            <span class="siswa-name">{{ item.nama_siswa }}</span>
+            <span class="siswa-name">Kelas {{ item.nama_kelas }}</span>
             <span class="kelas-badge">
-              {{ item.nama_kelas }} • {{ item.nama_sekolah }}
+              {{ item.nama_sekolah }}
             </span>
           </div>
 
@@ -100,9 +100,9 @@
         </div>
 
         <div class="log-body">
-          <p><strong>📱 No. WA Tujuan:</strong> {{ item.no_tujuan || '⚠️ Kosong' }}</p>
-          <p><strong>📚 Mapel / Tanggal:</strong> {{ item.nama_mapel || '-' }} ({{ item.tanggal }}, JP {{ item.jam_ke || '-' }})</p>
-          <p><strong>📌 Status Absen:</strong> {{ item.status_absen?.toUpperCase() }}</p>
+          <p><strong>💬 ID Grup WA Kelas:</strong> {{ item.no_tujuan || item.wa_group_id || '⚠️ Belum diisi' }}</p>
+          <p><strong>📚 Mapel / Guru:</strong> {{ item.nama_mapel || '-' }} — {{ item.nama_guru || '-' }}</p>
+          <p><strong>📅 Tanggal / Jam:</strong> {{ item.tanggal }} ({{ formatJam(item.jam_mulai, item.jam_selesai) }})</p>
           <p><strong>📡 Respon Fonnte:</strong> {{ item.fonnte_status_detail || '-' }}</p>
           <p v-if="item.waktu_kirim"><strong>🕒 Waktu Kirim:</strong> {{ item.waktu_kirim }}</p>
         </div>
@@ -243,6 +243,12 @@ function formatTanggalIndo(dateStr) {
   } catch {
     return dateStr
   }
+}
+
+function formatJam(mulai, selesai) {
+  const m = mulai ? String(mulai).slice(0, 5) : '-'
+  const s = selesai ? String(selesai).slice(0, 5) : '-'
+  return `${m} - ${s}`
 }
 
 async function fetchLogWa() {

@@ -20,6 +20,13 @@
         </option>
       </select>
 
+      <input
+        v-model="form.wa_group_id"
+        type="text"
+        class="neo-input"
+        placeholder="ID Grup WA Kelas (Contoh: 12036304xxxx@g.us)"
+      />
+
       <div class="form-btns">
         <button type="submit" class="neo-btn neo-btn-blue">
           {{ editId ? '💾 Update Kelas' : '➕ Tambah Kelas' }}
@@ -36,6 +43,9 @@
           <p class="k-name">{{ k.nama }} <small>({{ k.nama_sekolah }})</small></p>
           <small class="k-meta">
             TA: {{ k.nama_tahun }} ({{ k.semester }}) • Wali Kelas: {{ k.nama_wali_kelas || '-' }}
+          </small>
+          <small class="k-meta k-group">
+            💬 Grup WA: <strong>{{ k.wa_group_id || '⚠️ Belum diisi' }}</strong>
           </small>
         </div>
         <div class="row-actions">
@@ -62,6 +72,7 @@ const form = ref({
   nama: '',
   tingkat: '',
   wali_guru_id: '',
+  wa_group_id: '',
   is_aktif: 1,
 })
 
@@ -84,6 +95,7 @@ async function simpanKelas() {
     ...form.value,
     tahun_ajaran_id: form.value.tahun_ajaran_id || appState.tahunAjaranAktif?.id,
     wali_guru_id: form.value.wali_guru_id || null,
+    wa_group_id: form.value.wa_group_id?.trim() || null,
   }
 
   try {
@@ -107,6 +119,7 @@ function mulaiEdit(k) {
     nama: k.nama,
     tingkat: k.tingkat || '',
     wali_guru_id: k.wali_guru_id || '',
+    wa_group_id: k.wa_group_id || '',
     is_aktif: k.is_aktif,
   }
 }
@@ -119,6 +132,7 @@ function resetForm() {
     nama: '',
     tingkat: '',
     wali_guru_id: '',
+    wa_group_id: '',
     is_aktif: 1,
   }
 }
@@ -150,7 +164,8 @@ onMounted(() => {
   padding: 0.65rem; border: 2px solid var(--black); border-radius: 8px;
 }
 .k-name { font-weight: 900; font-size: 0.95rem; }
-.k-meta { font-size: 0.75rem; color: var(--gray-dark); font-weight: 600; }
+.k-meta { display: block; font-size: 0.75rem; color: var(--gray-dark); font-weight: 600; }
+.k-group { margin-top: 0.15rem; color: #065f46; }
 .row-actions { display: flex; gap: 0.35rem; }
 .btn-xs { padding: 0.3rem 0.55rem; font-size: 0.72rem; }
 @media (min-width: 640px) {

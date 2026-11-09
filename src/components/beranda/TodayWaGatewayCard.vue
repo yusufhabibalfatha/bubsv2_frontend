@@ -3,7 +3,7 @@
     <div class="wa-header">
       <div>
         <h3 class="wa-title">💬 Status WhatsApp Gateway (Fonnte) Hari Ini</h3>
-        <p class="wa-subtitle">Laporan pengiriman otomatis ke nomor orang tua/wali siswa</p>
+        <p class="wa-subtitle">Laporan pengiriman otomatis ringkasan absensi ke Grup WhatsApp Kelas</p>
       </div>
       <button
         type="button"
