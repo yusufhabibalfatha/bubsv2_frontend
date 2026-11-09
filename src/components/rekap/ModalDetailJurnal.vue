@@ -39,7 +39,6 @@
               <option value="terlambat">TERLAMBAT</option>
               <option value="izin">IZIN</option>
               <option value="sakit">SAKIT</option>
-              <option value="dispensasi">DISPENSASI</option>
               <option value="alpa">ALPA</option>
             </select>
 

@@ -92,7 +92,6 @@ const statusList = [
   { value: 'terlambat', label: 'Terlambat' },
   { value: 'izin', label: 'Izin' },
   { value: 'sakit', label: 'Sakit' },
-  { value: 'dispensasi', label: 'Dispen' },
   { value: 'alpa', label: 'Alpa' },
 ]
 
@@ -136,9 +135,6 @@ function ringkasTeks(teks) {
 
 .siswa-card[data-status="sakit"]      { border-color: #ef4444; background: #fef2f2; }
 .siswa-card[data-status="sakit"]::before { background: #ef4444; }
-
-.siswa-card[data-status="dispensasi"] { border-color: #8b5cf6; background: #f5f3ff; }
-.siswa-card[data-status="dispensasi"]::before { background: #8b5cf6; }
 
 .siswa-card[data-status="alpa"]       { border-color: #6b7280; background: #f3f4f6; }
 .siswa-card[data-status="alpa"]::before { background: #6b7280; }
@@ -256,7 +252,6 @@ function ringkasTeks(teks) {
 .opt-terlambat.active  { background: #f97316; }
 .opt-izin.active       { background: #f59e0b; color: var(--black); }
 .opt-sakit.active      { background: #ef4444; }
-.opt-dispensasi.active { background: #8b5cf6; }
 .opt-alpa.active       { background: #4b5563; }
 
 .detail-trigger-btn {

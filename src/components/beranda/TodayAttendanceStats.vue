@@ -26,11 +26,6 @@
         <span class="label">🤒 Sakit</span>
       </div>
 
-      <div class="status-box dispensasi">
-        <span class="count">{{ absensi?.dispensasi ?? 0 }}</span>
-        <span class="label">🎖️ Dispensasi</span>
-      </div>
-
       <div class="status-box alpa">
         <span class="count">{{ absensi?.alpa ?? 0 }}</span>
         <span class="label">❌ Alpa</span>
@@ -56,7 +51,6 @@ const totalTercatat = computed(() => {
     (a.terlambat || 0) +
     (a.izin || 0) +
     (a.sakit || 0) +
-    (a.dispensasi || 0) +
     (a.alpa || 0)
   )
 })
@@ -116,12 +110,11 @@ const totalTercatat = computed(() => {
 .terlambat  { background: #ffedd5; color: #9a3412; }
 .izin       { background: #fef3c7; color: #92400e; }
 .sakit      { background: #fee2e2; color: #991b1b; }
-.dispensasi { background: #ede9fe; color: #5b21b6; }
 .alpa       { background: #f3f4f6; color: #374151; }
 
 @media (min-width: 768px) {
   .status-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 </style>

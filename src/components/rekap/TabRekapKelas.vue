@@ -70,7 +70,6 @@
               <th>Telat</th>
               <th>Izin</th>
               <th>Sakit</th>
-              <th>Dispen</th>
               <th>Alpa</th>
               <th>% Hadir</th>
               <th>Rata Nilai</th>
@@ -86,7 +85,6 @@
               <td class="text-center">{{ s.terlambat }}</td>
               <td class="text-center">{{ s.izin }}</td>
               <td class="text-center">{{ s.sakit }}</td>
-              <td class="text-center">{{ s.dispensasi }}</td>
               <td class="text-center bg-alpa">{{ s.alpa }}</td>
               <td class="text-center font-bold">{{ s.persentase_hadir }}%</td>
               <td class="text-center font-bold">

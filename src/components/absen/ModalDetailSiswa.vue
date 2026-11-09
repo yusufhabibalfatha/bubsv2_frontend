@@ -94,7 +94,6 @@ function contohKeterangan(status) {
     case 'izin': return 'Contoh: Izin acara keluarga / pulang lebih awal'
     case 'sakit': return 'Contoh: Demam, istirahat di klinik asrama'
     case 'terlambat': return 'Contoh: Terlambat 15 menit'
-    case 'dispensasi': return 'Contoh: Mengikuti persiapan lomba sekolah'
     case 'alpa': return 'Contoh: Tanpa keterangan'
     default: return 'Contoh: Hadir tepat waktu'
   }

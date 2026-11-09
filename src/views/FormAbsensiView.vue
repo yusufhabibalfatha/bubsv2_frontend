@@ -143,7 +143,7 @@ const teksRingkasanGrup = ref('')
 
 // Hitung statistik real-time
 const stats = computed(() => {
-  const count = { hadir: 0, terlambat: 0, izin: 0, sakit: 0, dispensasi: 0, alpa: 0, belum: 0 }
+  const count = { hadir: 0, terlambat: 0, izin: 0, sakit: 0, alpa: 0, belum: 0 }
   for (const s of formData.value) {
     if (!s.status) count.belum++
     else if (count[s.status] !== undefined) count[s.status]++
@@ -252,7 +252,6 @@ function buatTeksRingkasanGrup() {
     { key: 'terlambat', label: 'Terlambat', icon: '🕐' },
     { key: 'izin', label: 'Izin', icon: '📋' },
     { key: 'sakit', label: 'Sakit', icon: '🤒' },
-    { key: 'dispensasi', label: 'Dispensasi', icon: '🎖️' },
     { key: 'alpa', label: 'Alpa', icon: '❌' },
   ]
 

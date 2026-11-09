@@ -16,10 +16,6 @@
       <span class="num">{{ stats.sakit }}</span>
       <span class="lbl">🤒 Sakit</span>
     </div>
-    <div class="stat-pill dispensasi">
-      <span class="num">{{ stats.dispensasi }}</span>
-      <span class="lbl">🎖️ Dispen</span>
-    </div>
     <div class="stat-pill alpa">
       <span class="num">{{ stats.alpa }}</span>
       <span class="lbl">❌ Alpa</span>
@@ -74,13 +70,12 @@ defineProps({
 .terlambat  { background: #ffedd5; color: #9a3412; }
 .izin       { background: #fef3c7; color: #92400e; }
 .sakit      { background: #fee2e2; color: #991b1b; }
-.dispensasi { background: #ede9fe; color: #5b21b6; }
 .alpa       { background: #e5e7eb; color: #1f2937; }
 .belum      { background: var(--white); color: var(--gray-dark); }
 
 @media (min-width: 640px) {
   .stats-grid {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 </style>
